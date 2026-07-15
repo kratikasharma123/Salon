@@ -1,5 +1,5 @@
 import { getSupabaseClient } from '../lib/supabase'
-import { currencyToDatabaseValue, normalizeWorkspace } from '../utils/workspaceMappers'
+import { normalizeWorkspace, onboardingFormToPayload } from '../utils/workspaceMappers'
 
 export async function ensureBusinessOwnerWorkspace() {
   const { data, error } = await getSupabaseClient().rpc('ensure_business_owner_workspace')
@@ -29,13 +29,8 @@ export async function getWorkspaceRedirectPath() {
 }
 
 export async function completeOwnerOnboarding(payload) {
-  const normalizedPayload = {
-    ...payload,
-    currency: currencyToDatabaseValue(payload.currency),
-  }
-
   const { data, error } = await getSupabaseClient().rpc('complete_owner_onboarding', {
-    p_payload: normalizedPayload,
+    p_payload: onboardingFormToPayload(payload),
   })
 
   if (error) throw error

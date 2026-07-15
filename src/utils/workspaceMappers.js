@@ -137,6 +137,32 @@ export function organizationToBusinessSettingsForm(organization) {
   }
 }
 
+export function onboardingFormToPayload(form) {
+  return {
+    businessName: form.businessName?.trim() || '',
+    businessType: form.businessType?.trim() || '',
+    businessEmail: form.businessEmail?.trim() || '',
+    businessPhone: form.businessPhone?.trim() || '',
+    logoUrl: form.logoUrl || '',
+    addressLine1: form.addressLine1?.trim() || '',
+    addressLine2: form.addressLine2?.trim() || '',
+    city: form.city?.trim() || '',
+    state: form.state?.trim() || '',
+    postalCode: form.postalCode?.trim() || '',
+    country: form.country?.trim() || '',
+    currency: currencyToDatabaseValue(form.currency),
+    timezone: form.timezone?.trim() || '',
+    language: form.language?.trim() || 'en',
+    dateFormat: form.dateFormat?.trim() || 'DD/MM/YYYY',
+    timeFormat: form.timeFormat?.trim() || '12h',
+    taxEnabled: Boolean(form.taxEnabled),
+    taxName: form.taxName?.trim() || '',
+    taxRate: form.taxRate === '' ? null : Number(form.taxRate),
+    taxDisplayType: form.taxDisplayType,
+    businessHours: normalizeBusinessHours(form.businessHours),
+  }
+}
+
 export function businessSettingsFormToOrganizationPatch(form) {
   const name = form.businessName ?? form.name
   const email = form.businessEmail ?? form.email

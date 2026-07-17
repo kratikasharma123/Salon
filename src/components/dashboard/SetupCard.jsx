@@ -1,11 +1,11 @@
-import { CheckCircle2, Circle, Settings } from 'lucide-react'
+import { CheckCircle2, Circle, Scissors, Settings } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const checklist = [
   { label: 'Business Created', complete: true },
   { label: 'Account Verified', complete: true },
-  { label: 'Business Hours Added', complete: true },
-  { label: 'Create First Branch', complete: false },
+  { label: 'Create First Branch', complete: true },
+  { label: 'Add Service Catalog', complete: false },
 ]
 
 function SetupCard() {
@@ -16,7 +16,7 @@ function SetupCard() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-terracotta">Workspace Setup</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-charcoal">Your workspace is 75% ready</h2>
           <p className="mt-2 text-sm leading-6 text-stone-500">
-            Complete the remaining setup tasks before launching daily salon operations.
+            Add services with categories, pricing, duration, and branch availability before launching daily salon operations.
           </p>
         </div>
         <div className="min-w-40">
@@ -43,10 +43,17 @@ function SetupCard() {
         ))}
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link
+          to="/services/new"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-brown px-4 text-sm font-semibold text-white shadow-subtle transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+        >
+          <Scissors className="h-4 w-4 text-white" />
+          Add Service
+        </Link>
         <Link
           to="/settings/business"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-brown px-4 text-sm font-semibold text-white shadow-subtle transition hover:bg-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-beige bg-white px-4 text-sm font-semibold text-brown transition hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta"
         >
           <Settings className="h-4 w-4" />
           Business Settings

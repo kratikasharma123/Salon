@@ -48,3 +48,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.bg-brown,
+.bg-brown *,
+.bg-charcoal,
+.bg-charcoal * {
+  color: #ffffff;
+}

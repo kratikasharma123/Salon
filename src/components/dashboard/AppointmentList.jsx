@@ -29,11 +29,11 @@ function AppointmentList({ appointments }) {
           {appointments.map((appointment) => (
             <div key={appointment.id} className="rounded-2xl border border-beige bg-ivory p-4">
               <div className="flex items-start gap-3">
-                <Avatar name={appointment.customer} size="sm" />
+                <Avatar name={appointment.clientName} size="sm" />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <p className="font-semibold text-charcoal">{appointment.customer}</p>
+                      <p className="font-semibold text-charcoal">{appointment.clientName}</p>
                       <p className="mt-1 text-sm text-stone-500">{appointment.service}</p>
                     </div>
                     <Badge variant={statusVariant[appointment.status] || 'neutral'}>{appointment.status}</Badge>

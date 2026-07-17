@@ -55,22 +55,20 @@ function DashboardLayout({ children, title = 'Dashboard', subtitle = 'Overview' 
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-ivory text-charcoal lg:grid lg:grid-cols-[18rem_1fr]">
-      <div className="hidden border-r border-beige bg-cream/80 lg:block">
-        <div className="sticky top-0 h-screen">
-          <Sidebar
-            avatarUrl={avatarUrl}
-            businessName={businessName}
-            displayName={displayName}
-            email={email}
-            logoUrl={logoUrl}
-            role={role}
-            onClose={closeSidebar}
-            onSignOut={handleSignOut}
-            userMenuOpen={sidebarUserMenuOpen}
-            onUserMenuToggle={() => setSidebarUserMenuOpen((current) => !current)}
-          />
-        </div>
+    <div className="min-h-screen overflow-x-hidden bg-ivory text-charcoal">
+      <div className="fixed inset-y-0 left-0 hidden w-72 border-r border-beige bg-cream/80 lg:block">
+        <Sidebar
+          avatarUrl={avatarUrl}
+          businessName={businessName}
+          displayName={displayName}
+          email={email}
+          logoUrl={logoUrl}
+          role={role}
+          onClose={closeSidebar}
+          onSignOut={handleSignOut}
+          userMenuOpen={sidebarUserMenuOpen}
+          onUserMenuToggle={() => setSidebarUserMenuOpen((current) => !current)}
+        />
       </div>
 
       {sidebarOpen ? (
@@ -96,7 +94,7 @@ function DashboardLayout({ children, title = 'Dashboard', subtitle = 'Overview' 
         />
       </div>
 
-      <div className="min-w-0">
+      <div className="min-w-0 lg:ml-72">
         <TopNavbar
           avatarUrl={avatarUrl}
           title={title}

@@ -1,15 +1,21 @@
 import {
   Activity,
   BarChart3,
+  Building2,
   CalendarDays,
+  Clock3,
   CreditCard,
   FileText,
+  Gift,
   LayoutDashboard,
   LogOut,
   Package,
+  Percent,
   ReceiptText,
   Scissors,
   Settings,
+  Tags,
+  Target,
   Users,
   WalletCards,
   X,
@@ -29,16 +35,29 @@ const navigationSections = [
     label: 'Operations',
     items: [
       { icon: CalendarDays, title: 'Appointments', route: '/appointments', allowedRoles: ['Business Owner'], enabled: false },
-      { icon: Users, title: 'Customers', route: '/customers', allowedRoles: ['Business Owner'], enabled: false },
-      { icon: Scissors, title: 'Services', route: '/services', allowedRoles: ['Business Owner'], enabled: false },
       { icon: CreditCard, title: 'POS & Billing', route: '/billing', allowedRoles: ['Business Owner'], enabled: false },
+    ],
+  },
+  {
+    label: 'Services',
+    items: [
+      { icon: Tags, title: 'Service Categories', route: '/service-categories', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Scissors, title: 'Services', route: '/services', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Gift, title: 'Combo Packages', route: '/combo-packages', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Percent, title: 'Seasonal Offers', route: '/seasonal-offers', allowedRoles: ['Business Owner'], enabled: true },
     ],
   },
   {
     label: 'Management',
     items: [
+      { icon: Building2, title: 'Branches', route: '/branches', allowedRoles: ['Business Owner'], enabled: true },
       { icon: Package, title: 'Inventory', route: '/inventory', allowedRoles: ['Business Owner'], enabled: false },
-      { icon: Users, title: 'Employees', route: '/employees', allowedRoles: ['Business Owner'], enabled: false },
+      { icon: Users, title: 'Employees', route: '/employees', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Clock3, title: 'Working Hours', route: '/working-hours', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: WalletCards, title: 'Salary Records', route: '/salary-records', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Percent, title: 'Commissions', route: '/commissions', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Target, title: 'Targets', route: '/targets', allowedRoles: ['Business Owner'], enabled: true },
+      { icon: Clock3, title: 'Shifts', route: '/shifts', allowedRoles: ['Business Owner'], enabled: true },
       { icon: ReceiptText, title: 'Expenses', route: '/expenses', allowedRoles: ['Business Owner'], enabled: false },
     ],
   },
@@ -69,7 +88,7 @@ function BrandLogo({ logoUrl }) {
 
 function SidebarNavItem({ item, onNavigate }) {
   const location = useLocation()
-  const isActive = location.pathname === item.route
+  const isActive = location.pathname === item.route || location.pathname.startsWith(`${item.route}/`)
   const Icon = item.icon
   const baseClasses = 'flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta'
 
@@ -97,8 +116,8 @@ function SidebarNavItem({ item, onNavigate }) {
         isActive ? 'bg-brown text-white shadow-subtle' : 'text-stone-600 hover:bg-cream hover:text-brown'
       }`}
     >
-      <Icon className="h-4 w-4" />
-      <span>{item.title}</span>
+      <Icon className={`h-4 w-4 ${isActive ? 'text-white' : ''}`} />
+      <span className={isActive ? 'text-white' : undefined}>{item.title}</span>
     </NavLink>
   )
 }

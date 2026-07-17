@@ -2,12 +2,9 @@ import {
   CalendarDays,
   CreditCard,
   IndianRupee,
-  ReceiptText,
   Scissors,
   ShieldCheck,
   Sparkles,
-  UserPlus,
-  Users,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AppointmentList from '../../components/dashboard/AppointmentList'
@@ -42,12 +39,12 @@ const stats = [
     icon: CalendarDays,
   },
   {
-    label: 'Customers',
-    value: '1,248',
-    change: '+28',
+    label: 'Active Services',
+    value: '42',
+    change: '+6',
     trend: 'up',
-    helper: 'Total salon customers',
-    icon: Users,
+    helper: 'Catalog services ready',
+    icon: Scissors,
   },
   {
     label: 'Active Employees',
@@ -70,22 +67,22 @@ const revenueData = [
 ]
 
 const appointments = [
-  { id: 1, time: '10:00 AM', customer: 'Aaradhya Mehta', service: 'Hair spa + blow dry', stylist: 'Priya', status: 'Confirmed' },
-  { id: 2, time: '11:30 AM', customer: 'Riya Kapoor', service: 'Global hair color', stylist: 'Maya', status: 'Pending' },
-  { id: 3, time: '02:00 PM', customer: 'Naina Shah', service: 'Bridal makeup trial', stylist: 'Sofia', status: 'Confirmed' },
-  { id: 4, time: '04:30 PM', customer: 'Anika Rao', service: 'Luxury manicure', stylist: 'Elena', status: 'Completed' },
+  { id: 1, time: '10:00 AM', clientName: 'Aaradhya Mehta', service: 'Hair spa + blow dry', stylist: 'Priya', status: 'Confirmed' },
+  { id: 2, time: '11:30 AM', clientName: 'Riya Kapoor', service: 'Global hair color', stylist: 'Maya', status: 'Pending' },
+  { id: 3, time: '02:00 PM', clientName: 'Naina Shah', service: 'Bridal makeup trial', stylist: 'Sofia', status: 'Confirmed' },
+  { id: 4, time: '04:30 PM', clientName: 'Anika Rao', service: 'Luxury manicure', stylist: 'Elena', status: 'Completed' },
 ]
 
 const quickActions = [
+  { icon: Scissors, title: 'Add Service', description: 'Create pricing, duration, and branch availability for a service.', route: '/services/new', enabled: true },
   { icon: CalendarDays, title: 'New Appointment', description: 'Create a booking once appointments are enabled.' },
-  { icon: UserPlus, title: 'Add Customer', description: 'Add client profiles in the customers module later.' },
+  { icon: Sparkles, title: 'Add Seasonal Offer', description: 'Create a promotion for a service or combo package.', route: '/seasonal-offers/new', enabled: true },
   { icon: CreditCard, title: 'Create Invoice', description: 'Prepare POS billing in a future milestone.' },
-  { icon: ReceiptText, title: 'Add Expense', description: 'Track salon expenses when management tools launch.' },
 ]
 
 const activities = [
   { id: 1, icon: ShieldCheck, title: 'Business profile updated', description: 'Workspace branding and contact details were reviewed.', time: '12 min ago' },
-  { id: 2, icon: Users, title: 'Customer added', description: 'A new customer profile was prepared for follow-up.', time: '38 min ago' },
+  { id: 2, icon: Scissors, title: 'Service catalog updated', description: 'Service pricing and branch availability were prepared for bookings.', time: '38 min ago' },
   { id: 3, icon: CalendarDays, title: 'Appointment created', description: 'Hair spa appointment added to today’s placeholder schedule.', time: '1 hr ago' },
   { id: 4, icon: Sparkles, title: 'Password changed', description: 'Account security activity was recorded.', time: 'Yesterday' },
 ]
@@ -111,7 +108,7 @@ function DashboardHero({ businessName, firstName, greeting, isLoading }) {
         <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-rose-muted/10 blur-3xl" />
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <Badge variant="brand">Milestone 1 Dashboard</Badge>
+            <Badge variant="brand">Milestone 2 Workspace</Badge>
             {isLoading ? (
               <Skeleton className="mt-4 h-12 w-72 max-w-full" />
             ) : (

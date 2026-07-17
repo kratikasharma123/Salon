@@ -26,7 +26,7 @@ function TopNavbar({ avatarUrl, title, subtitle, displayName, email, onMenuClick
             <Search className="h-4 w-4 text-stone-400" />
             <input
               type="search"
-              placeholder="Search appointments, customers..."
+              placeholder="Search appointments, services..."
               aria-label="Search SalonPro workspace"
               className="w-full bg-transparent text-sm text-charcoal outline-none placeholder:text-stone-400"
             />
